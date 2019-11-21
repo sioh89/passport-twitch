@@ -6,6 +6,8 @@ Twitch is a trademark or registered trademark of Twitch Interactive, Inc. in the
 [Passport](http://passportjs.org/) strategies for authenticating with [Twitch](http://www.twitch.tv/)
 using OAuth 2.0.
 
+***This module is an update to [passport-twitch](https://www.npmjs.com/package/passport-twitch) to account for Twitch's new API***
+
 This module lets you authenticate using Twitch in your Node.js applications.
 By plugging into Passport, Twitch authentication can be easily and
 unobtrusively integrated into any application or framework that supports
@@ -33,7 +35,7 @@ passport.use(new twitchStrategy({
     clientID: TWITCH_CLIENT_ID,
     clientSecret: TWITCH_CLIENT_SECRET,
     callbackURL: "http://127.0.0.1:3000/auth/twitch/callback",
-    scope: "user_read"
+    scope: "user:read"
   },
   function(accessToken, refreshToken, profile, done) {
     User.findOrCreate({ twitchId: profile.id }, function (err, user) {
